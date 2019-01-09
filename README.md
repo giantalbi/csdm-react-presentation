@@ -404,6 +404,17 @@ $ sudo npm install -g create-react-app
 
 
 # Aller plus loins
+## Test unitaire avec Jest
+Jest est le framework de test de facebook, React étant aussi par Facebook, il est logique d'utiliser leur framework.
+
+Il viens préinstaller avec notre package create-react-app
+
+Il ne suffit que de tapper
+```
+$ npm test
+```
+et notre menu de test apparaitra
+
 ## Redux
 Librairie Javascript permettant une gestion d’état (state) par conteneur
 Permet une gestion plus “clean” des données d’une application grace à un flow de donnée de type flux.
