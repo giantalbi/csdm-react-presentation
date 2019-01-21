@@ -423,4 +423,7 @@ https://redux.js.org/introduction/coreconcepts
 Tous les états (states) sont stocké dans un conteneur (store)
 
 ## React-Native
+En utilisant les mêmes concepts explorés plus tôt, il est possible de les appliquer sur la création d'application mobile native (android et IOS) pouvant être publié sur leur platefrome respective
 
+### expo.io
+Est un service de développement d'application react-native, à l'aide de l'application mobile "expo" pour le développement, il est possible de développer une application pour android et IOS en temps réel ne nécessitant pas android studio / mven / etc (nécessite tout de même android SDK pour le packaging ou xcode )
