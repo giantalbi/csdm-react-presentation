@@ -193,14 +193,14 @@ const utilisateur = {
 const element = (<h2>Bonjour { utilisateur.prenom }</h2>);
 ```
 
-## Composante React
-Un composante React n'est qu'une classe retournant du JSX pouvant être rendu par le ReactDOM.
+## Composant React
+Un composant React n'est qu'une classe retournant du JSX pouvant être rendu par le ReactDOM.
 
 ```javascript
 // card.js
 import React, { Component } from 'react';
 
-class Card extends Component{
+export default class Card extends Component{
     render(){
         return (
             <div>
@@ -212,11 +212,14 @@ class Card extends Component{
 ```
 ```javascript
 // index.js
-import Card from './Card';
+import React from 'react';
 import ReactDOM from 'react-dom';
+import Card from './Card';
 
 ReactDOM.render(<Card/>, document.getElementById("root"));
 ```
+
+https://stackblitz.com/edit/react-wsqc9h
 
 ## États (states) et propriétées (props)
 L'avantage des composantes est qu'il peuvent gèrer différent
@@ -246,9 +249,12 @@ class Salutation extends Component{
 
 const foo = "Samuel";
 
-ReactDOM.render(<salutation prenom={ foo } />, document.getElementById("root"));
+ReactDOM.render(<Salutation prenom={ foo } />, document.getElementById("root"));
 
 ```
+
+https://stackblitz.com/edit/react-yc3xbs?file=index.js
+
 Les propriétés sont en lecture-seul, comme les props servent d'entrée pour notre composante elle ne doivent donc pas être modifié, cela pourrais compromettre la pureté de notre composante
 
 Pour citer la documentation officielle de React:
@@ -264,7 +270,7 @@ Contrairement aux propriétés, les états servent à gèrer les données d'une 
 import ReactDOM from 'react-dom';
 import React, {Component} from 'react';
 
-class foo extends Component{
+class Foo extends Component{
     state = {
         valeur: 0
     }
@@ -305,9 +311,9 @@ class foo extends Component{
             car celle si ne fait pas référence au précédente état du state mais l'état actuel
             */
             // Incorrecte, mais techniquement faisable
-            this.setState({
-                valeur: this.state.valeur + 1
-            })
+            // this.setState({
+            //     valeur: this.state.valeur + 1
+            // })
         }, 1000);
     }
 
@@ -322,7 +328,7 @@ class foo extends Component{
     }
 }
 
-ReactDOM.render(<salutation prenom={ foo } />, document.getElementById("root"));
+ReactDOM.render(<Foo/>, document.getElementById("root"));
 ```
 
 Quoi retenir pour correctement utiliser les états:
@@ -373,6 +379,107 @@ export default class Card extends Component{
 }
 ```
 
+https://stackblitz.com/fork/react?file=index.js
+
+# Les événements
+Tout comme en HTML, il est possible de rattacher une méthode à un évènement du DOM
+
+```javascript
+// card.js
+import React, { Component } from 'react';
+
+export default class Card extends Component{
+    state = {
+        footer: false
+    }
+
+    constructor(props){
+        super(props);
+
+        // IMPORTANT pour rattacher this à l'évènement
+        this.displayFooter = this.displayFooter.bind(this);
+    }
+
+    displayFooter(){
+        this.setState(state => { footer: !state.footer });
+    }
+
+    render(){
+        const { type } = this.props;
+        return (
+            <div>
+                <b>{type == "danger" ? "Attention": "Info"}</b>
+                Ceci est une carte
+            </div>
+            <br/>
+            <button onClick={ this.displayFooter }>
+                Cliquer moi!
+            </button>
+            {this.state.footer &&
+                <div>
+                    Ceci est le bas de la page
+                </div>
+            }
+        );
+    }
+}
+```
+
+https://stackblitz.com/edit/react-yeeah6
+
+# Les styles
+Pour rajouter du style à nos interfaces, on peut utiliser du CSS
+de 2 façons
+
+Peut importe la façon, on peut rattacherune classe **CSS** à n'importe quel élément avec l'attribut ```className```
+
+## Feuille de styles
+On peut importer des feulles de styles CSS régulières de cette façon
+
+```css
+/* style.css */
+.foo{
+    background-color: #000;
+    width: 50px;
+    height: 50px;
+}
+```
+```javascript
+//  styledComponent.js
+import "./style.css";
+
+export default class StyledComponent{
+    render(){
+        return(
+            <div className="foo">
+            </div>
+        )
+    }
+}
+```
+
+## Style en ligne (inline)
+Il ne suffit que de créer un objet représentant nos styles
+```javascript
+//  styledComponent.js
+
+const style = {
+    color: "#fff",
+    width: "50px",
+    height: "50px"
+}
+
+export default class StyledComponent{
+    render(){
+        return(
+            <div style={ style }>
+            </div>
+        )
+    }
+}
+```
+
+https://stackblitz.com/edit/react-ke3ejb?file=index.js
 
 # Prérequis
 ## Installation de Node
@@ -409,7 +516,10 @@ Il suffit d'installer le package NPM globale
 ```
 $ sudo npm install -g create-react-app
 ```
-
+et de créer un projet
+```
+$ create-react-app nomDuProjet
+```
 
 # Aller plus loins
 ## Test unitaire avec Jest
