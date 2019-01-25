@@ -340,7 +340,7 @@ sois retiré du DOM (agis comme un **destructeur**)
 // card.js
 import React, { Component } from 'react';
 
-class Card extends Component{
+export default class Card extends Component{
     render(){
         const { type } = this.props;
         return (
@@ -360,7 +360,7 @@ class Card extends Component{
 // card.js
 import React, { Component } from 'react';
 
-class Card extends Component{
+export default class Card extends Component{
     render(){
         const { type } = this.props;
         return (
@@ -378,10 +378,18 @@ class Card extends Component{
 ## Installation de Node
 
 ### Windows 
-TODO
+1. Télécharger l'installeur **stable** sur le site officiel
+
+    https://nodejs.org/
+
+2. Exécuter l'installeur
+
+    * Il faut s'assurer que l'option de rajouter Node au PATH sois sélectionné
+
+3. Redémarrer l'ordinateur
 
 ### Linux / WSL
-1. Installer NPM
+1. Installer NPM à partir du gestionnaire de package de votre distribution
 ```
 $ sudo apt install npm
 ```
