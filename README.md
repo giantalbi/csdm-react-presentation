@@ -379,7 +379,7 @@ export default class Card extends Component{
 }
 ```
 
-https://stackblitz.com/fork/react?file=index.js
+https://stackblitz.com/edit/react-3e8fgz?file=index.js
 
 # Les événements
 Tout comme en HTML, il est possible de rattacher une méthode à un évènement du DOM
