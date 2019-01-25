@@ -33,7 +33,6 @@ class Home extends Component{
 ## Points négatifs (Opinion personnelle)
 * DEPENDENCY HELL!!!
 * Nécessité de beaucoup de librairies supplémentaires pour une expérience complète
-* Courbe d’apprentissage
 * Confusions entre Props et States et leurs cas d’utilisations
 
 ## Points positifs 
@@ -431,10 +430,9 @@ https://stackblitz.com/edit/react-yeeah6
 Pour rajouter du style à nos interfaces, on peut utiliser du CSS
 de 2 façons
 
-Peut importe la façon, on peut rattacherune classe **CSS** à n'importe quel élément avec l'attribut ```className```
-
 ## Feuille de styles
 On peut importer des feulles de styles CSS régulières de cette façon
+et utiliser les classes avec sur not éléments avec l'attribut ```className```
 
 ```css
 /* style.css */
@@ -460,6 +458,7 @@ export default class StyledComponent{
 
 ## Style en ligne (inline)
 Il ne suffit que de créer un objet représentant nos styles
+et d'utiliser l'attribut ```style``` pour passer notre object de style
 ```javascript
 //  styledComponent.js
 
@@ -485,7 +484,7 @@ https://stackblitz.com/edit/react-ke3ejb?file=index.js
 ## Installation de Node
 
 ### Windows 
-1. Télécharger l'installeur **stable** sur le site officiel
+1. Télécharger l'installeur sur le site officiel
 
     https://nodejs.org/
 
