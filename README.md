@@ -362,6 +362,17 @@ export default class Card extends Component{
 }
 ```
 
+## Rendu de liste
+```javacript
+{this.state.drinks.map( d => {
+    return <li>
+        <b>{d.name}</b>
+    </li>
+})}
+```
+
+https://stackblitz.com/edit/react-nukpkv
+
 ### Utilisation du if ternaire
 ```javascript
 // card.js
