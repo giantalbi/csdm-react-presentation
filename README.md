@@ -119,6 +119,8 @@ foo({ x: x })
 
 ```
 
+https://stackblitz.com/edit/js-wqxpwm
+
 ## Assignement destructeur
 Permet d'aller chercher une valeur dans un object plus facilement
 ```javascript
@@ -395,7 +397,7 @@ export default class Card extends Component{
     constructor(props){
         super(props);
 
-        // IMPORTANT pour rattacher this à l'évènement
+        // IMPORTANT pour rattacher this à l'événement
         this.displayFooter = this.displayFooter.bind(this);
     }
 
